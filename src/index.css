@@ -61,8 +61,8 @@
 
 /* Global color tokens */
 :root {
-	--bg-dark-900: #02020a;
-	--bg-dark-800: #070316;
+	--bg-dark-900: #000319;
+	--bg-dark-800: #000319;
 	--primary-purple: #7c3aed;
 	--primary-indigo: #8b5cf6;
 	--accent-gold: #f59e0b;
@@ -73,9 +73,8 @@ html, body, #root {
 	height: 100%;
 }
 body {
-	background: radial-gradient(1200px 600px at 10% 20%, rgba(124,58,237,0.14) 0%, rgba(139,92,246,0.06) 8%, rgba(0,0,0,0) 35%),
-							radial-gradient(900px 500px at 85% 60%, rgba(245,158,11,0.06) 0%, rgba(124,58,237,0.02) 25%, rgba(0,0,0,0) 40%),
-							linear-gradient(180deg, rgba(1,2,10,1) 0%, rgba(6,6,12,1) 100%);
+	/* Use a solid background color across the site per project request */
+	background: var(--bg-dark-900);
 	background-color: var(--bg-dark-900);
 	color: #e6e6ea;
 }

@@ -20,17 +20,17 @@ export default function CourseDetails() {
 
   if (!course) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#050510] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#000319] text-white">
         <div className="text-center">
           <h2 className="text-2xl font-semibold">Course not found</h2>
-          <Link to="/services" className="mt-4 inline-block text-indigo-400">Back to services</Link>
+          <Link to="/services" className="mt-4 inline-block text-indigo-400">Back to course</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <section className="min-h-screen bg-[#050510] text-white px-6 py-20">
+    <section className="min-h-screen bg-[#000319] text-white px-6 py-20">
       <img src={light} alt="decorative" className="pointer-events-none absolute -left-24 -top-20 opacity-90 mix-blend-screen" style={{ width: 620, transform: 'rotate(-12deg)' }} />
 
       <div className="max-w-4xl mx-auto">

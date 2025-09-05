@@ -20,8 +20,9 @@ export default function Navbar() {
 
         <nav className="hidden md:flex gap-8 items-center">
           <Link to="/" className="nav-link">Home</Link>
-          <a href="#features" className="nav-link">Features</a>
-          <Link to="/services" className="nav-link">Services</Link>
+          <Link to="/success-stories" className="nav-link">Success Stories</Link>
+          <Link to="/blog" className="nav-link">Blog</Link>
+          <Link to="/services" className="nav-link">Course</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
         </nav>
 
@@ -41,10 +42,11 @@ export default function Navbar() {
 
         {/* Mobile nav overlay */}
         {open && (
-          <div className="absolute left-0 right-0 top-full bg-[#050510]/95 backdrop-blur-md p-6 md:hidden">
+          <div className="absolute left-0 right-0 top-full bg-[#000319]/95 backdrop-blur-md p-6 md:hidden">
             <div className="flex flex-col gap-4">
               <Link to="/" onClick={() => setOpen(false)} className="nav-link">Home</Link>
               <a href="#features" onClick={() => setOpen(false)} className="nav-link">Features</a>
+              <Link to="/success-stories" onClick={() => setOpen(false)} className="nav-link">Success Stories</Link>
               <Link to="/services" onClick={() => setOpen(false)} className="nav-link">Services</Link>
               <Link to="/contact" onClick={() => setOpen(false)} className="nav-link">Contact</Link>
             </div>

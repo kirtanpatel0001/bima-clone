@@ -29,7 +29,7 @@ export default function Hero() {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen flex items-center bg-[#050510] text-white px-6 overflow-hidden">
+  <section className="relative min-h-screen flex items-center bg-[#000319] text-white px-6 overflow-hidden">
       {/* Decorative left-top light overlay (home only) */}
   <img src={light} alt="decorative light" className="pointer-events-none absolute -left-24 -top-20 opacity-100 mix-blend-screen" style={{ width: 620, transform: 'rotate(-12deg)' }} />
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">

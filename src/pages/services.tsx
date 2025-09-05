@@ -42,19 +42,19 @@ export default function Services() {
 	const shouldReduce = useReducedMotion();
 
 	return (
-			<section className="relative min-h-screen flex flex-col bg-[#050510] text-white px-6 overflow-hidden pt-32">
+		<section className="relative min-h-screen flex flex-col bg-[#000319] text-white px-6 overflow-hidden pt-32">
 			<img src={light} alt="decorative light" className="pointer-events-none absolute -left-24 -top-20 opacity-90 mix-blend-screen" style={{ width: 620, transform: 'rotate(-12deg)' }} />
 
 				{/* top overlay so the fixed, transparent navbar doesn't visually blend with the heading */}
-				<div className="pointer-events-none absolute top-0 left-0 w-full h-20 md:h-24 lg:h-28 bg-gradient-to-b from-[#050510] to-transparent z-40" />
+				<div className="pointer-events-none absolute top-0 left-0 w-full h-20 md:h-24 lg:h-28 bg-gradient-to-b from-[#000319] to-transparent z-40" />
 
 			<div className="max-w-7xl w-full mx-auto py-12">
 				<motion.div className="mb-8 max-w-3xl" variants={container} initial={shouldReduce ? "show" : "hidden"} animate="show">
 					<motion.h1 variants={item} className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-						Our Services
+						Our Courses
 					</motion.h1>
 					<motion.p variants={item} className="mt-4 text-gray-300">
-						We help businesses ship AI products and workflows that save time, reduce errors, and create new value.
+						We help Students To help  to learn and grow  And Achieve Their Goals with Practical, Hands-on Courses.
 					</motion.p>
 				</motion.div>
 
