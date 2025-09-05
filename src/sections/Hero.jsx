@@ -1,76 +1,63 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import heroVideo from "../assets/zGhnB0sDl2lgYYho2DPbtmTsYQ.webm";
+import light from "../assets/0J5Sh8pzQ8QLRcicRCJ91lYaInI.avif";
+
+// Motion variants moved outside the component to avoid re-creating them on each render
+const textContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      // slightly larger stagger for a smooth, readable entrance
+      staggerChildren: 0.14,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+// slide in from the right using translateX for GPU-accelerated transforms
+const textItem = {
+  hidden: { opacity: 0, x: 80 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { ease: [0.22, 1, 0.36, 1], duration: 0.9 },
+  },
+};
 
 export default function Hero() {
-  const textContainer = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
 
-  const textItem = {
-    hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.6 } },
-  };
+  const shouldReduce = useReducedMotion();
 
   return (
     <section className="relative min-h-screen flex items-center bg-[#050510] text-white px-6 overflow-hidden">
+      {/* Decorative left-top light overlay (home only) */}
+  <img src={light} alt="decorative light" className="pointer-events-none absolute -left-24 -top-20 opacity-100 mix-blend-screen" style={{ width: 620, transform: 'rotate(-12deg)' }} />
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
         
         {/* Left: Text */}
         <motion.div
           className="md:w-1/2 w-full text-left"
           variants={textContainer}
-          initial="hidden"
+          initial={shouldReduce ? "show" : "hidden"}
           animate="show"
+          style={{ willChange: "transform" }}
         >
           <motion.h1
             variants={textItem}
             className="font-sans text-4xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight"
-            style={{ fontFamily: "Inter, sans-serif" }}
+            style={{ fontFamily: "Inter, sans-serif", willChange: "transform" }}
           >
-            Turning Business into{" "}
-            <motion.span
-              variants={textItem}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-yellow-400"
-            >
-              AI-Powered Machine.
-            </motion.span>
+            Turning Business into <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-yellow-400">AI-Powered Machine.</span>
           </motion.h1>
 
-          <motion.p
-            variants={textItem}
-            className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed"
-          >
-            <motion.span variants={textItem} className="inline-block">
-              A result-focused design partner to help you
-            </motion.span>{" "}
-            <motion.span variants={textItem} className="text-white font-semibold inline-block">
-              automate workflows
-            </motion.span>
-            ,{" "}
-            <motion.span variants={textItem} className="text-white font-semibold inline-block">
-              optimize operations
-            </motion.span>
-            , and scale faster with{" "}
-            <motion.span variants={textItem} className="text-white font-semibold inline-block">
-              AI solutions
-            </motion.span>
-            .
+          <motion.p variants={textItem} className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed" style={{ willChange: "transform" }}>
+            A result-focused design partner to help you <span className="text-white font-semibold">automate workflows</span>, <span className="text-white font-semibold">optimize operations</span>, and scale faster with <span className="text-white font-semibold">AI solutions</span>.
           </motion.p>
 
           {/* CTA */}
-          <motion.div variants={textItem} className="mt-10">
+          <motion.div variants={textItem} className="mt-10" style={{ willChange: "transform" }}>
             <motion.button whileHover={{ scale: 1.03 }} className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold shadow-lg transition-transform">
-              <img
-                src="https://randomuser.me/api/portraits/women/44.jpg"
-                alt="avatar"
-                className="w-8 h-8 rounded-full"
-              />
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="avatar" className="w-8 h-8 rounded-full" />
               Get a Free AI Strategy Session
             </motion.button>
           </motion.div>
@@ -78,25 +65,19 @@ export default function Hero() {
 
         {/* Right: Circular video effect */}
         <div className="md:w-1/2 w-full relative flex justify-center items-center">
-          <div className="relative right-[-300px]  w-[50px] h-[50px] md:w-[50rem] md:h-[40rem] rounded-full overflow-hidden flex items-center justify-center isolate">
-            <video
-              src={heroVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="hero-video w-full h-full object-contain bg-transparent mix-blend-screen opacity-90"
-              style={{ backgroundColor: "transparent" }}
-            />
-
-            {/* Center 'hole' to simulate transparency (matches section bg) */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-              <div className="w-1/2 h-1/2 md:w-1/3 md:h-1/3 rounded-full bg-[#050510] shadow-[0_0_60px_rgba(5,5,10,0.6)]" />
+          {/* Rectangular, responsive video (removed circular mask and center hole) */}
+            <div className="relative w-full max-w-none mx-auto flex justify-end">
+              <div className="relative right-[-192px] w-[640px] sm:w-[896px] md:w-[1120px]  lg:w-[1152px] overflow-visible transform translate-x-6 md:translate-x-12 lg:translate-x-20">
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="hero-video w-[1120px] h-[630px] object-contain"
+                />
+              </div>
             </div>
-
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r 0 blur-3xl" />
-          </div>
         </div>
       </div>
     </section>
