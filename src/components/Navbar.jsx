@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../assets/LOGO.png";
+import logo from "../assets/LOGO2.png";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -11,7 +11,7 @@ export default function Navbar() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed w-full top-0 left-0 bg-transparent backdrop-blur-sm z-50"
+      className="relative w-full bg-transparent z-50"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 text-white">
         <Link to="/">

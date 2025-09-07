@@ -1,17 +1,29 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import Features from "./sections/Features";
+import Team from "./sections/Team";
+import FAQ from "./sections/FAQ";
+import Workflow from "./sections/Workflow";
+import TopBrands from "./sections/TopBrands";
+import TechStack from "./sections/TechStack";
 import Footer from "./components/Footer";
 import Contact from './pages/contact';
 import Services from './pages/services';
 import CourseDetails from './pages/courseDetails';
+import CoursePricing from "./sections/CoursePricing";
+import Testimonials from "./sections/Testimonials";
 
 function Home() {
   return (
     <>
       <Hero />
-      <Features />
+      <Workflow />
+  <TopBrands />  
+  <TechStack />
+  <Testimonials />
+  <CoursePricing />
+  <Team />
+  <FAQ />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
 import heroVideo from "../assets/zGhnB0sDl2lgYYho2DPbtmTsYQ.webm";
-import light from "../assets/0J5Sh8pzQ8QLRcicRCJ91lYaInI.avif";
 
 // Motion variants moved outside the component to avoid re-creating them on each render
 const textContainer = {
@@ -30,8 +29,6 @@ export default function Hero() {
 
   return (
   <section className="relative min-h-screen flex items-center bg-[#000319] text-white px-6 overflow-hidden">
-      {/* Decorative left-top light overlay (home only) */}
-  <img src={light} alt="decorative light" className="pointer-events-none absolute -left-24 -top-20 opacity-100 mix-blend-screen" style={{ width: 620, transform: 'rotate(-12deg)' }} />
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
         
         {/* Left: Text */}
@@ -47,7 +44,7 @@ export default function Hero() {
             className="font-sans text-4xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight"
             style={{ fontFamily: "Inter, sans-serif", willChange: "transform" }}
           >
-            Turning Business into <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-yellow-400">AI-Powered Machine.</span>
+            Turning Business into <span className="text-purple-400">AI-Powered Machine.</span>
           </motion.h1>
 
           <motion.p variants={textItem} className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed" style={{ willChange: "transform" }}>
@@ -56,7 +53,7 @@ export default function Hero() {
 
           {/* CTA */}
           <motion.div variants={textItem} className="mt-10" style={{ willChange: "transform" }}>
-            <motion.button whileHover={{ scale: 1.03 }} className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold shadow-lg transition-transform">
+            <motion.button whileHover={{ scale: 1.03 }} className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold transition-transform">
               <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="avatar" className="w-8 h-8 rounded-full" />
               Get a Free AI Strategy Session
             </motion.button>
