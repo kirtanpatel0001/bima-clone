@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { motion } from "framer-motion";
 
 const CheckIcon = memo(({ className = "w-5 h-5 text-indigo-400" }) => (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
@@ -6,7 +7,7 @@ const CheckIcon = memo(({ className = "w-5 h-5 text-indigo-400" }) => (
 	</svg>
 ));
 
-const PlanCard = memo(function PlanCard({ plan }) {
+const PlanCard = memo(function PlanCard({ plan, animation }) {
 	const {
 		id,
 		title,
@@ -15,16 +16,19 @@ const PlanCard = memo(function PlanCard({ plan }) {
 		tagline,
 		cta,
 		features,
-		featured,
 	} = plan;
 
-	const baseCard = "p-8 rounded-2xl relative overflow-hidden";
-	const cardClass = featured
-		? `${baseCard} shadow-2xl border border-transparent` 
-		: `card-dark ${baseCard} border border-white/5`;
+	const cardClass = "card-dark p-8 rounded-2xl relative overflow-hidden border border-white/5";
 
 	return (
-		<article className={cardClass} aria-labelledby={`plan-${id}`}>
+		<motion.article
+			className={cardClass}
+			aria-labelledby={`plan-${id}`}
+			initial={animation.initial}
+			whileInView={animation.whileInView}
+			viewport={{ once: true, amount: 0.3 }}
+			transition={{ duration: 3, type: "spring" }}
+		>
 			<div className="decor absolute -right-6 -top-6 w-40 h-40 rounded-full border-4 border-white/6 opacity-10 pointer-events-none" />
 			<h3 id={`plan-${id}`} className="text-white/90 font-semibold mb-6">
 				{title}
@@ -32,25 +36,25 @@ const PlanCard = memo(function PlanCard({ plan }) {
 
 			<div className="mb-6">
 				<div className="flex items-baseline gap-3">
-					<span className={`font-extrabold ${featured ? 'text-5xl' : 'text-4xl'} text-white`}>{price}</span>
+					<span className="font-extrabold text-4xl text-white">{price}</span>
 					<span className="text-sm text-gray-400">{priceLabel}</span>
 				</div>
 				<p className="mt-4 text-gray-400" dangerouslySetInnerHTML={{ __html: tagline }} />
 			</div>
 
-			<button className={featured ? 'w-full py-3 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold mb-6 shadow-cta' : 'w-full py-3 rounded-full bg-transparent border border-white/6 text-white font-semibold mb-6'}>
+			<button className="w-full py-3 rounded-full bg-transparent border border-white/6 text-white font-semibold mb-6">
 				{cta}
 			</button>
 
 			<ul className="space-y-3 text-gray-300 text-sm">
 				{features.map((f, i) => (
 					<li key={i} className="flex items-start gap-3">
-						<CheckIcon className={`w-5 h-5 mt-1 ${featured ? 'text-indigo-300' : 'text-indigo-400'} flex-shrink-0`} />
+						<CheckIcon className="w-5 h-5 mt-1 text-indigo-400 flex-shrink-0" />
 						<span>{f}</span>
 					</li>
 				))}
 			</ul>
-		</article>
+		</motion.article>
 	);
 });
 
@@ -76,7 +80,6 @@ const PLANS = [
 		priceLabel: '/month',
 		tagline: 'Perfect for<br/>Growing teams',
 		cta: 'Choose Growth',
-		featured: true,
 		features: [
 			'Everything in Starter Plan',
 			'Advanced AI chatbots with custom responses',
@@ -103,17 +106,20 @@ const PLANS = [
 ];
 
 export default function CoursePricing() {
+	// Animation: 1st and 3rd from left, 2nd from right
+	const animations = [
+		{ initial: { x: -80, opacity: 0 }, whileInView: { x: 0, opacity: 1 } },
+		{ initial: { x: 80, opacity: 0 }, whileInView: { x: 0, opacity: 1 } },
+		{ initial: { x: -80, opacity: 0 }, whileInView: { x: 0, opacity: 1 } },
+	];
 	return (
 		<section className="max-w-7xl mx-auto px-6 py-20">
 			<div className="flex items-center justify-between mb-10">
 				<h2 className="text-4xl font-extrabold top-72 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-400">COURSES</h2>
-
-				
 			</div>
-
 			<div className="grid gap-8 md:grid-cols-3">
-				{PLANS.map((p) => (
-					<PlanCard key={p.id} plan={p} />
+				{PLANS.map((p, i) => (
+					<PlanCard key={p.id} plan={p} animation={animations[i % animations.length]} />
 				))}
 			</div>
 		</section>
