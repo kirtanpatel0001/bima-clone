@@ -13,28 +13,35 @@
 
 /* Video glow and ring matching the purple/gold palette */
 .bg-video-glow {
-	background: radial-gradient(closest-side, rgba(140,92,246,0.28), rgba(124,58,237,0.18) 30%, rgba(245,158,11,0.06) 60%, rgba(0,0,0,0) 100%);
-}
-
-.ring-video-border {
-	box-shadow: 0 0 40px rgba(124,58,237,0.35), inset 0 0 20px rgba(245,158,11,0.12);
-	border-color: rgba(255,255,255,0.03);
+	background: radial-gradient(
+		closest-side,
+		rgba(140, 92, 246, 0.28),
+		rgba(124, 58, 237, 0.18) 30%,
+		rgba(245, 158, 11, 0.06) 60%,
+		rgba(0, 0, 0, 0) 100%
+	);
 }
 
 /* CTA gradient used in navbar button */
 .bg-cta-gradient,
 .bg-cta-gradient:hover {
-	background-image: linear-gradient(90deg, #7c3aed 0%, #8b5cf6 40%, #f59e0b 100%);
+	background-image: linear-gradient(
+		90deg,
+		#7c3aed 0%,
+		#8b5cf6 40%,
+		#f59e0b 100%
+	);
 }
 
 .shadow-cta {
-	box-shadow: 0 8px 30px rgba(124,58,237,0.18), 0 2px 6px rgba(0,0,0,0.4);
+	box-shadow: 0 8px 30px rgba(124, 58, 237, 0.18),
+		0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Navbar link underline animation */
 .nav-link {
 	position: relative;
-	color: rgba(255,255,255,0.9);
+	color: rgba(255, 255, 255, 0.9);
 	padding: 6px 4px;
 	transition: color 180ms ease;
 }
@@ -48,7 +55,7 @@
 	height: 3px;
 	border-radius: 999px;
 	background: linear-gradient(90deg, #7c3aed, #f59e0b);
-	transition: width 220ms cubic-bezier(.2,.9,.2,1);
+	transition: width 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .nav-link:hover {
@@ -69,8 +76,19 @@
 }
 
 /* Page background matching hero/video palette */
-html, body, #root {
+html,
+body,
+#root {
 	height: 100%;
+	/* Hide native scrollbars visually but keep scrolling enabled */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
 }
 body {
 	/* Use a solid background color across the site per project request */
@@ -81,16 +99,27 @@ body {
 
 /* Dark card used in features and other sections */
 .card-dark {
-	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.02),
+		rgba(255, 255, 255, 0.01)
+	);
 	border-radius: 1rem;
-	border: 1px solid rgba(255,255,255,0.03);
-	transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+	border: 1px solid rgba(255, 255, 255, 0.03);
+	transition: transform 200ms ease, box-shadow 200ms ease,
+		border-color 200ms ease;
 }
 
 .card-dark:hover {
 	transform: translateY(-6px);
-	box-shadow: 0 18px 50px rgba(124,58,237,0.12), 0 6px 18px rgba(0,0,0,0.6);
-	border-image: linear-gradient(90deg, var(--primary-purple), var(--accent-gold)) 1;
+	box-shadow: 0 18px 50px rgba(124, 58, 237, 0.12),
+		0 6px 18px rgba(0, 0, 0, 0.6);
+	border-image: linear-gradient(
+			90deg,
+			var(--primary-purple),
+			var(--accent-gold)
+		)
+		1;
 	border-color: transparent;
 }
 
@@ -121,34 +150,51 @@ body {
 	object-fit: cover;
 	opacity: 0.95;
 	/* default blend can be toggled via utility classes */
-	filter: drop-shadow(0 20px 60px rgba(0,0,0,0.6));
+	filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.6));
 }
 
 /* Blend mode utility classes to try different looks */
-.blend-screen { mix-blend-mode: screen; }
-.blend-overlay { mix-blend-mode: overlay; }
+.blend-screen {
+	mix-blend-mode: screen;
+}
+.blend-overlay {
+	mix-blend-mode: overlay;
+}
 
 /* Subtle gradient highlight overlay positioned above the video */
 .hero-video-overlay {
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-	background: radial-gradient(40% 40% at 70% 20%, rgba(255,255,255,0.18), rgba(124,58,237,0.06) 30%, rgba(0,0,0,0) 60%);
+	background: radial-gradient(
+		40% 40% at 70% 20%,
+		rgba(255, 255, 255, 0.18),
+		rgba(124, 58, 237, 0.06) 30%,
+		rgba(0, 0, 0, 0) 60%
+	);
 	mix-blend-mode: screen;
 	opacity: 0.9;
 }
 
-/* Opt-in utility to hide scrollbars without breaking scroll behavior
-	 Usage: add the class `no-scroll` to <html>, <body> or your #root element */
+/* Opt-in utility to hide scrollbars visually while preserving scroll behavior */
 .no-scroll {
-	overflow: hidden !important; /* prevents scrolling when applied */
+	/* allow scrolling but hide native scrollbars */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
-/* Hide scrollbar in WebKit browsers (Chrome, Safari) when using no-scroll */
 .no-scroll::-webkit-scrollbar {
-	display: none;
+	display: none; /* Chrome, Safari */
 }
 
-/* Firefox: hide scrollbar but keep functionality off; requires overflow hidden above */
-/* For older browsers, scrollbar may still be visible; this is an opt-in utility */
+/* Ensure snapped sections can't be skipped during fast scrolling */
+.snap-stop-always {
+	scroll-snap-stop: always;
+}
 
+/* ===== Sticky Scroll Section helpers ===== */
+.scroll-section {
+	/* Reduced height so sections are easier to scroll and sticky offsets work reliably */
+	min-height: 50vh;
+	position: relative;
+}

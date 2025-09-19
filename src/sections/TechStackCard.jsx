@@ -1,16 +1,15 @@
 // TechStackCard.jsx
 import React from 'react';
 
-export default function TechStackCard({ icon, label, number, angle = 0 }) {
+export default function TechStackCard({ icon, label, number, angleX = 0, angleY = 0, posX = 0, posY = 0 }) {
   return (
     <div
       className="relative flex flex-col items-center justify-end w-[270px] h-[320px] rounded-2xl border border-white/10 bg-[#111426]"
       style={{
-        transform: `perspective(900px) rotateY(${angle}deg)`,
+        transform: `perspective(900px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateX(${posX}px) translateY(${posY}px)`,
         boxShadow: '0 8px 40px rgba(124,58,237,0.10), 0 2px 6px rgba(0,0,0,0.4)',
         border: '1.5px solid rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(2px)',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(11,14,35,0.98) 100%)',
+        background: '#111426',
         opacity: 1,
       }}
     >

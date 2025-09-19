@@ -17,46 +17,32 @@ export default function Footer({ emailSize = 'text-2xl md:text-3xl' }) {
             <div className="uppercase tracking-widest">[ MAIL US ]</div>
           </div>
 
-          {/* center contact */}
-          <div className="md:col-span-5">
-                <p className="text-sm text-gray-400 mb-2">+1234567890</p>
-    <motion.h2
-      className={`${emailSize} font-light leading-tight whitespace-normal md:whitespace-nowrap`}
-              style={{
-                background: 'linear-gradient(90deg,#ffffff 0%, #b19fff 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-            >
-              skillcodeai.institute@gmail.com
-            </motion.h2>
+          {/* center contact: use same vertical spacing as left labels so items line up */}
+          <div className="md:col-span-5 flex flex-col gap-6">
+            <p className="text-sm text-gray-400"> +91 91047 57776</p>
+            {/* Plain email (no animation), same size as the number */}
+            <p className="text-1xl text-gray-400">skillcodeai.institute@gmail.com</p>
           </div>
 
-          {/* right navigation & follow lists */}
+          {/* right navigation & follow lists */} 
           <div className="md:col-span-5 flex flex-col md:flex-row md:justify-end gap-8 text-left">
             <div>
               <div className="text-sm text-gray-500 uppercase tracking-widest mb-4">[ NAVIGATION ]</div>
               <ul className="space-y-3 text-white">
                 <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Home</motion.a>
+                  <motion.a href="/home" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Home</motion.a>
+                </li>
+                
+                <li>
+                  <motion.a href="/services" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Courses</motion.a>
                 </li>
                 <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>success-stories</motion.a>
+                  <motion.a href="/contact" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Contact</motion.a>
                 </li>
                 <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>courses</motion.a>
+                  <motion.a href="/blog" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Blog</motion.a>
                 </li>
-                <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Contact</motion.a>
-                </li>
-                <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Blog</motion.a>
-                </li>
-                <li>
-                  <motion.a href="#" className="nav-link pb-1" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>404</motion.a>
-                </li>
+               
               </ul>
             </div>
 
@@ -64,13 +50,13 @@ export default function Footer({ emailSize = 'text-2xl md:text-3xl' }) {
               <div className="text-sm text-gray-500 uppercase tracking-widest mb-4">[ FOLLOW US ]</div>
               <ul className="space-y-3 text-white">
                 <li>
-                  <motion.a href="#" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>X/Twitter</motion.a>
+                  <motion.a href="https://www.youtube.com/@SkillCode.AIInstitute" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>YouTube</motion.a>
                 </li>
                 <li>
-                  <motion.a href="#" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Instagram</motion.a>
+                  <motion.a href="https://www.instagram.com/skillcodeai.institute/" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Instagram</motion.a>
                 </li>
                 <li>
-                  <motion.a href="#" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>LinkedIn</motion.a>
+                  <motion.a href="https://www.facebook.com/profile.php?id=61580257503079" className="nav-link" whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>Facebook</motion.a>
                 </li>
               </ul>
             </div>

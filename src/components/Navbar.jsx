@@ -20,16 +20,17 @@ export default function Navbar() {
 
         <nav className="hidden md:flex gap-8 items-center">
           <Link to="/" className="nav-link">Home</Link>
-          <Link to="/success-stories" className="nav-link">Success Stories</Link>
           <Link to="/blog" className="nav-link">Blog</Link>
           <Link to="/services" className="nav-link">Course</Link>
-          <Link to="/contact" className="nav-link">Contact</Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="hidden md:inline-block px-5 py-2 rounded-xl bg-cta-gradient text-white shadow-cta hover:scale-105 transition-transform">
-            Work with Us
-          </button>
+          <Link
+            to="/contact"
+            className="hidden md:inline-block px-5 py-2 rounded-xl bg-cta-gradient text-white shadow-cta hover:scale-105 transition-transform"
+          >
+            Study With Us
+          </Link>
 
           {/* Mobile menu button */}
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 border border-white/10 rounded">
@@ -45,8 +46,8 @@ export default function Navbar() {
           <div className="absolute left-0 right-0 top-full bg-[#000319]/95 backdrop-blur-md p-6 md:hidden">
             <div className="flex flex-col gap-4">
               <Link to="/" onClick={() => setOpen(false)} className="nav-link">Home</Link>
-              <a href="#features" onClick={() => setOpen(false)} className="nav-link">Features</a>
-              <Link to="/success-stories" onClick={() => setOpen(false)} className="nav-link">Success Stories</Link>
+            
+                <Link to="/blog" onClick={() => setOpen(false)} className="nav-link">Blog</Link>
               <Link to="/services" onClick={() => setOpen(false)} className="nav-link">Services</Link>
               <Link to="/contact" onClick={() => setOpen(false)} className="nav-link">Contact</Link>
             </div>

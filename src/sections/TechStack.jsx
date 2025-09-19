@@ -1,94 +1,57 @@
-import React from 'react';
+import pythonImg from '../assets/python.jpeg';
+import tensorflowImg from '../assets/tenserflow.jpeg';
+import ethereumImg from '../assets/ethereum.png';
+import kaliImg from '../assets/kali.png';
+import githubImg from '../assets/github.png';
 
 import { motion } from 'framer-motion';
 import TechStackCard from './TechStackCard';
 
-
-// MANUAL DATA ENTRY: Add/edit your tech stack here
 const techs = [
-  {
-    label: 'OPENAI',
-    number: 1,
-    angle: -15,
-    icon: (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#fff" strokeWidth="4" opacity="0.12"/><path d="M32 16a16 16 0 1 1 0 32 16 16 0 0 1 0-32z" stroke="#fff" strokeWidth="2" opacity="0.5"/></svg>
-    ),
-  },
-  {
-    label: 'ZAPIER',
-    number: 2,
-    angle: -12,
-    icon: (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#fff" strokeWidth="4" opacity="0.12"/><path d="M32 20v24M20 32h24M25 25l14 14M25 39l14-14" stroke="#fff" strokeWidth="2" opacity="0.5"/></svg>
-    ),
-  },
-  {
-    label: 'AIRTABLE',
-    number: 3,
-    angle: -9,
-    icon: (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="12" y="28" width="40" height="20" rx="4" fill="#fff" opacity="0.08"/><rect x="20" y="16" width="24" height="16" rx="4" fill="#fff" opacity="0.18"/></svg>
-    ),
-  },
-  {
-    label: 'LANGCHAIN',
-    number: 4,
-    angle: -6,
-    icon: (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><ellipse cx="44" cy="32" rx="8" ry="12" fill="#fff" opacity="0.08"/><ellipse cx="24" cy="32" rx="8" ry="12" fill="#fff" opacity="0.08"/><path d="M36 32h8M20 32h8" stroke="#fff" strokeWidth="2" opacity="0.5"/></svg>
-    ),
-  },
-  {
-    label: 'PYTHON',
-    number: 5,
-    angle: -3,
-    icon: (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="16" y="16" width="32" height="32" rx="8" fill="#fff" opacity="0.08"/><path d="M24 32h16M32 24v16" stroke="#fff" strokeWidth="2" opacity="0.5"/></svg>
-    ),
-  },
+  { label: 'PYTHON', number: 1, angleX: 0, angleY: -30, icon: <img src={pythonImg} alt="Python logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain rounded-full border-2 border-white shadow-lg bg-white" loading="lazy" />, posX: 0, posY: 0 },
+  { label: 'TENSORFLOW', number: 2, angleX: 0, angleY: -30, icon: <img src={tensorflowImg} alt="TensorFlow logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain rounded-full border-2 border-white shadow-lg bg-white" loading="lazy" />, posX: 0, posY: -25 },
+  { label: 'ETHEREUM', number: 3, angleX: 0, angleY: -30, icon: <img src={ethereumImg} alt="Ethereum logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain rounded-full border-2 border-white shadow-lg bg-white" loading="lazy" />, posX: 0, posY: -65 },
+  { label: 'KALI LINUX', number: 4, angleX: 0, angleY: -30, icon: <img src={kaliImg} alt="Kali Linux logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain rounded-full border-2 border-white shadow-lg bg-white" loading="lazy" />, posX: 0, posY: -95 },
+  { label: 'GIT & GITHUB', number: 5, angleX: 0, angleY: -30, icon: <img src={githubImg} alt="GitHub logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain rounded-full border-2 border-white shadow-lg bg-white" loading="lazy" />, posX: 0, posY: -125 },
 ];
 
 export default function TechStack() {
   return (
-    <section className="relative py-32 bg-[#090B1A] overflow-x-hidden">
-      <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-5xl font-bold text-white mb-2 leading-tight">
-          Our<span className="text-gradient ml-2">Tech</span><br />Stack
+    <section className="relative py-20 md:py-32 bg-[#090B1A] overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-center md:text-left">
+          Our
+          <span className="text-gradient ml-2">Tech</span>
+          <br className="hidden md:block" />
+          Stack
         </h2>
+
         <motion.div
-          className="mt-16 flex flex-row items-end justify-center gap-[-32px] md:gap-[-48px] relative z-10"
-          style={{ gap: 0 }}
+          className="mt-12 md:mt-16 flex flex-col sm:flex-row flex-wrap justify-center md:flex-nowrap md:items-end gap-6 md:gap-0 relative z-10"
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.45 }}
           variants={{
             hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.13,
-              },
-            },
+            visible: { transition: { staggerChildren: 0.13 } },
           }}
         >
           {techs.map((t, i) => (
             <motion.div
               key={t.label}
-              className="-ml-16 first:ml-0 last:mr-0"
+              className="flex-shrink-0 md:-ml-16 first:ml-0 last:mr-0"
               style={{ zIndex: 10 - i }}
               variants={{
                 hidden: {
                   opacity: 0,
-                  x: i < techs.length / 2 ? -120 : 120,
+                  x: i < techs.length / 2 ? -80 : 80,
                   scale: 0.92,
                 },
                 visible: {
                   opacity: 1,
                   x: 0,
                   scale: 1,
-                  transition: {
-                    type: 'spring',
-                    stiffness: 60,
-                    damping: 16,
-                  },
+                  transition: { type: 'spring', stiffness: 60, damping: 16 },
                 },
               }}
             >
@@ -96,7 +59,10 @@ export default function TechStack() {
                 icon={t.icon}
                 label={t.label}
                 number={t.number}
-                angle={t.angle}
+                angleX={t.angleX}
+                angleY={t.angleY}
+                posX={t.posX}
+                posY={t.posY}
               />
             </motion.div>
           ))}
@@ -105,4 +71,3 @@ export default function TechStack() {
     </section>
   );
 }
-  

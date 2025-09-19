@@ -1,32 +1,32 @@
-import React, { useState, useCallback } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import React, { useState, useCallback } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const FAQ_ITEMS = [
   {
-    q: 'How can AI automation help my business?',
-    a: 'AI automation reduces manual work, speeds up processes, improves accuracy, and frees staff to focus on higher-value tasks. It can automate customer support, reporting, predictions, and repetitive operations.'
+    q: "How can AI and Machine Learning help students in their careers?",
+    a: "Our AI and ML courses prepare students to automate tasks, analyze data, and develop intelligent systems, opening doors to high-paying and future-proof careers.",
   },
   {
-    q: 'Is AI difficult to integrate into my current system?',
-    a: 'Integration complexity depends on your current systems and data quality. We focus on minimal-disruption integrations, using APIs and microservices when possible to keep rollout smooth.'
+    q: "Is Cyber Security difficult to learn for beginners?",
+    a: "Not at all! We guide students step-by-step through practical labs and real-world projects, making even complex Cyber Security concepts approachable.",
   },
   {
-    q: 'What industries can benefit from AI automation?',
-    a: 'Almost every industry can benefit: finance, healthcare, retail, manufacturing, logistics, and professional services — especially where repetitive tasks, prediction, or large data volumes exist.'
+    q: "What will I learn in Blockchain courses?",
+    a: "Students learn decentralized technologies, smart contract development, and real-world blockchain applications to build innovative solutions.",
   },
   {
-    q: "What's the difference between your pricing plans?",
-    a: 'Plans vary by volume, level of customization, SLA and support. We offer transparent tiers from starter packages to fully-managed custom solutions.'
+    q: "Can I enroll in multiple courses at once?",
+    a: "Yes, our institute allows students to combine AI, ML, Cyber Security, and Blockchain courses to gain a competitive advantage in the tech industry.",
   },
   {
-    q: 'How long does AI setup take?',
-    a: 'Typical setups can range from a few days for simple automations to several months for large, bespoke deployments. We provide an estimated timeline after initial assessment.'
+    q: "How long does it take to complete a course?",
+    a: "Course duration varies: AI/ML and Cyber Security typically take a few months for hands-on mastery, while Blockchain is project-based and may vary.",
   },
   {
-    q: 'Can I request a custom AI solution?',
-    a: 'Yes — we design custom solutions tailored to data, workflows, and goals. Start with a short discovery call to scope your needs.'
-  }
-]
+    q: "Do you provide career support after the course?",
+    a: "Absolutely! We offer placement support, project guidance, and mentorship to help our students secure roles in leading tech companies.",
+  },
+];
 
 function IconPlus({ open }) {
   return (
@@ -34,33 +34,57 @@ function IconPlus({ open }) {
       className="inline-block text-white/80"
       initial={false}
       animate={{ rotate: open ? 45 : 0 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       aria-hidden
     >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 5v14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 5v14"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M5 12h14"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </motion.span>
-  )
+  );
 }
 
-const Item = React.memo(function Item({ item, index, isOpen, onToggle, disableMotion }) {
+const Item = React.memo(function Item({
+  item,
+  index,
+  isOpen,
+  onToggle,
+  disableMotion,
+}) {
   return (
     <div className="w-full">
       <button
-        className="w-full flex items-center justify-between p-4 md:p-5 rounded-2xl bg-white/5 hover:bg-white/6 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+        className="w-full flex items-center justify-between p-4 md:p-5 rounded-2xl bg-white/5 hover:bg-white/6 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 text-left"
         onClick={() => onToggle(index)}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            onToggle(index)
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onToggle(index);
           }
         }}
         aria-expanded={isOpen}
         aria-controls={`faq-panel-${index}`}
       >
-        <span className="text-left text-sm md:text-base text-white/90 font-medium">{item.q}</span>
+        <span className="text-sm md:text-base font-medium">{item.q}</span>
         <IconPlus open={isOpen} />
       </button>
 
@@ -69,28 +93,28 @@ const Item = React.memo(function Item({ item, index, isOpen, onToggle, disableMo
           <motion.div
             id={`faq-panel-${index}`}
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ ease: 'easeOut', duration: disableMotion ? 0 : 0.35 }}
+            transition={{ ease: "easeOut", duration: disableMotion ? 0 : 0.35 }}
             className="overflow-hidden"
           >
-            <div className="p-4 md:p-6 bg-gradient-to-b from-white/2 to-transparent mt-3 rounded-xl text-sm text-white/70">
+            <div className="p-4 md:p-6 bg-gradient-to-b from-white/2 to-transparent mt-3 rounded-xl text-sm md:text-base text-white/70">
               {item.a}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
-})
+  );
+});
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null)
-  const disableMotion = useReducedMotion()
+  const [openIndex, setOpenIndex] = useState(null);
+  const disableMotion = useReducedMotion();
 
   const toggle = useCallback((idx) => {
-    setOpenIndex((prev) => (prev === idx ? null : idx))
-  }, [])
+    setOpenIndex((prev) => (prev === idx ? null : idx));
+  }, []);
 
   const containerVariants = disableMotion
     ? { hidden: {}, show: {} }
@@ -99,25 +123,37 @@ export default function FAQ() {
         show: {
           opacity: 1,
           y: 0,
-          transition: { when: 'beforeChildren', staggerChildren: 0.06, duration: 0.6, ease: 'easeOut' }
-        }
-      }
+          transition: {
+            when: "beforeChildren",
+            staggerChildren: 0.06,
+            duration: 0.6,
+            ease: "easeOut",
+          },
+        },
+      };
 
   return (
     <motion.section
-      className="py-16 md:py-24 px-6 md:px-12 lg:px-20 bg-[rgb(6,7,22)] text-white"
+      className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-20 bg-[rgb(6,7,22)] text-white overflow-x-hidden"
       variants={containerVariants}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.12 }}
+      animate="show" // ✅ runs immediately, no scroll trigger
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div className="order-1 md:order-1 flex flex-col justify-center">
-          <motion.h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-400" layout>
+          <motion.h2
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-400 mb-4 sm:mb-6"
+            layout
+          >
             FAQ
           </motion.h2>
-          <motion.p className="mt-6 text-white/70 max-w-md leading-relaxed" layout>
-            Our AI-driven automation eliminates busywork, streamlines your operations, and helps your business grow, without extra effort.
+          <motion.p
+            className="text-white/70 max-w-md leading-relaxed text-sm sm:text-base md:text-lg"
+            layout
+          >
+            Our institute offers hands-on courses in AI, Machine Learning,
+            Cyber Security, and Blockchain. Learn with real projects and expert
+            mentors to kickstart your tech career.
           </motion.p>
         </div>
 
@@ -138,5 +174,5 @@ export default function FAQ() {
         </div>
       </div>
     </motion.section>
-  )
+  );
 }
